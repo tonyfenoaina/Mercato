@@ -1,0 +1,12 @@
+@page
+@model Mercato.Pages.Backoffice.Clubs.Delete
+
+
+<h1>Delete Club</h1>
+<form method="post">
+    <input type="hidden" asp-for="Model.Id" />
+    <p>Are you sure you want to delete this club: @Model.Club.Name?</p>
+    <button type="submit">Delete</button>
+</form>
+    
+</div>

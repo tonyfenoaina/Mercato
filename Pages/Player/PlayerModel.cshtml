@@ -1,0 +1,33 @@
+@page
+@model Mercato.Pages.Player.PlayerModel
+@{
+
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+
+    <form method="post">
+    <div class="form-group">
+        <label asp-for="Players.Name"></label>
+        <input name="Name" asp-for="Players.Name" class="form-control" />
+        <span asp-validation-for="Players.Name" class="text-danger"></span>
+    </div>
+
+     <div class="form-group">
+        <label asp-for="Players.Position"></label>
+        <input name="Position" asp-for="Players.Position" class="form-control" />
+        <span asp-validation-for="Players.Position" class="text-danger"></span>
+    </div>
+
+     <div class="form-group">
+        <label asp-for="Players.Value"></label>
+        <input name="Value" asp-for="Players.Value" class="form-control" />
+        <span asp-validation-for="Players.Value" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Player</button>
+</form>
+    
+</div>

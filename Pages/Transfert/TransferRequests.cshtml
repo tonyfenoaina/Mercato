@@ -1,0 +1,64 @@
+@page
+@model Mercato.Pages.TransferRequestsModel
+@{
+    ViewData["Title"] = "Liste des Offres de Transfert";
+}
+
+<h1>Liste des Offres de Transfert</h1>
+
+<form method="get">
+    <div class="form-group">
+        <label for="searchTerm">Rechercher par nom du joueur</label>
+        <input type="text" id="searchTerm" name="searchTerm" value="@Model.SearchTerm" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom du Joueur</th>
+            <th>Position</th>
+            <th>Offre</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model.TransferRequests)
+        {
+            <tr>
+                <td>@request.Player.Name</td>
+                <td>@request.Player.Position</td>
+                <td>@request.Offer</td>
+                <td>@request.Date.ToShortDateString()</td>
+                <td>@request.Status</td>
+                <td>
+                    <form method="post" asp-page-handler="UpdateStatus">
+                        <input type="hidden" name="requestId" value="@request.Id" />
+                        <button type="submit" name="status" value="1" class="btn btn-success">Valider</button>
+                        <button type="submit" name="status" value="2" class="btn btn-danger">Refuser</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <ul class="pagination">
+        <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+            <a class="page-link" asp-page="./TransferRequests" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@(Model.PageIndex - 1)">Précédent</a>
+        </li>
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                <a class="page-link" asp-page="./TransferRequests" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@i">@i</a>
+            </li>
+        }
+        <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
+            <a class="page-link" asp-page="./TransferRequests" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@(Model.PageIndex + 1)">Suivant</a>
+        </li>
+    </ul>
+</div>

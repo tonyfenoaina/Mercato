@@ -1,0 +1,12 @@
+@page
+@model Mercato.Pages.Backoffice.Clubs.Edit
+
+<h1>Edit Club</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Model.Id" />
+    <label for="Name">Name:</label>
+    <input type="text"    id="Name" name="Name" value="@Model.Clubtest.Name" required>
+    <br />
+    <button type="submit">Save changes</button>
+</form>

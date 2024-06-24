@@ -1,0 +1,30 @@
+@page
+@model Mercato.Pages.Player.ImportPlayersModel
+@{
+    ViewData["Title"] = "ImportPlayersModel";
+}
+
+<h1>Import des Joueurs</h1>
+
+@if (ViewData.ModelState.IsValid)
+{
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="csvFile">Sélectionnez un fichier CSV :</label>
+            <input type="file" class="form-control-file" id="csvFile" name="csvFile" accept=".csv">
+        </div>
+        <button type="submit" class="btn btn-primary">Importer</button>
+    </form>
+}
+else
+{
+    <div class="alert alert-danger">
+        @foreach (var key in ViewData.ModelState.Keys)
+        {
+            foreach (var error in ViewData.ModelState[key].Errors)
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        }
+    </div>
+}

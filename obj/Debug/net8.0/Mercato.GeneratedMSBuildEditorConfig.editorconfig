@@ -1,0 +1,103 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Mercato
+build_property.RootNamespace = Mercato
+build_property.ProjectDir = D:\DEV\github\Mercato\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\DEV\github\Mercato
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/DEV/github/Mercato/Pages/Backoffice/Clubs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFja29mZmljZVxDbHVic1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Backoffice/Clubs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFja29mZmljZVxDbHVic1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Backoffice/Clubs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFja29mZmljZVxDbHVic1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Backoffice/Clubs/ListClubs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFja29mZmljZVxDbHVic1xMaXN0Q2x1YnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Clubs/RegisterModel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcUmVnaXN0ZXJNb2RlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/People.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVvcGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Player/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWVyXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Player/ImportPlayersModel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWVyXEltcG9ydFBsYXllcnNNb2RlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Player/ListPlayers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWVyXExpc3RQbGF5ZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Player/PlayerModel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWVyXFBsYXllck1vZGVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Player/PlayerTransfertList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWVyXFBsYXllclRyYW5zZmVydExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Transfert/MesOffres.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNmZXJ0XE1lc09mZnJlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Transfert/TransferRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNmZXJ0XFRyYW5zZmVyUmVxdWVzdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Utils/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbHNcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-nxzvld4vv9

@@ -1,0 +1,39 @@
+@page
+@model Mercato.Pages.Clubs.RegisterModel
+@{
+    ViewData["Title"] = "RegisterModel";
+    Layout = null;
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mercato</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Mercato.styles.css" asp-append-version="true" />
+</head>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Club.Name"></label>
+        <input name="Name" asp-for="Club.Name" class="form-control" />
+        <span asp-validation-for="Club.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Club.Code"></label>
+        <input name="Code" asp-for="Club.Code" class="form-control" />
+        <span asp-validation-for="Club.Code" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Club.Password"></label>
+        <input name="Password" asp-for="Club.Password" type="password" class="form-control" />
+        <span asp-validation-for="Club.Password" class="text-danger"></span>
+    </div>
+     <div class="form-group">
+        <label asp-for="Club.Budget"></label>
+        <input name="Budget" asp-for="Club.Budget" type="text" class="form-control" />
+        <span asp-validation-for="Club.Budget" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

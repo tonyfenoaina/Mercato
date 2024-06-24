@@ -1,0 +1,52 @@
+@page
+@model Mercato.Pages.Backoffice.Clubs.ListClubs
+@{
+    var clubInfo = TempData["ClubInfo"] as string;
+}
+ <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Récupère les informations du club depuis TempData
+           
+
+            // Enregistre les informations du club dans le local storage
+            if(JSON.parse(localStorage.getItem("clubInfo"))== null){
+                 var clubInfo = '@clubInfo';
+             console.log("tayyyyyy"+clubInfo)
+             clubInfo = clubInfo.replace(/&quot;/g, '"');
+
+            console.log('clubInfo before parsing:', clubInfo);
+             var club = JSON.parse(clubInfo);
+            localStorage.setItem("clubId", club.Id);
+            localStorage.setItem("clubInfo", JSON.stringify(club));
+            }
+           
+            var test = JSON.parse(localStorage.getItem("clubInfo"))
+            console.log("hahah"+test.Id)
+        });
+    </script>
+
+<h1>Clubs</h1>
+<p><a asp-page="Create">Create a new club</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var club in Model.Club)
+        {
+            <tr>
+                <td>@club.Id</td>
+                <td>@club.Name</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@club.Id">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@club.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

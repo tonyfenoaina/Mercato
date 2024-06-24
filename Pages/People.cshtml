@@ -1,0 +1,41 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "People";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model.People)
+        {
+            <tr>
+                <td>@person.Id</td>
+                <td>@person.FirstName</td>
+                <td>@person.LastName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form method="post">
+    <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required />
+    </div>
+    <div>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required />
+    </div>
+    <div>
+        <button type="submit">Add Person</button>
+    </div>
+</form>

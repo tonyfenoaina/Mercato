@@ -1,0 +1,65 @@
+@page
+@model Mercato.Pages.Player.ListPlayers
+@{
+    ViewData["Title"] = "Liste des Joueurs";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p><a asp-page="PlayerModel">Créer de nouveaux joueurs</a></p>
+<p><a asp-page="ImportPlayersModel">Importer des joueurs</a></p>
+
+<form method="get">
+    <div class="form-group">
+        <label for="searchTerm">Rechercher par nom du joueur</label>
+        <input type="text" id="searchTerm" name="searchTerm" value="@Model.SearchTerm" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Liste des transferts</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model.Players)
+        {
+            <tr>
+                <td>@player.Name</td>
+                <td>@player.Position</td>
+                <td>
+                    <form method="post" asp-page-handler="ToggleTransferStatus">
+                        <input type="hidden" name="PlayerId" value="@player.Id" />
+                        <input type="checkbox" name="IsForTransfer" value="true" @(player.IsForTransfer ? "checked" : "") onchange="this.form.submit();" />
+                    </form>
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@player.Id">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@player.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <ul class="pagination">
+        <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+            <a class="page-link" asp-page="./ListPlayers" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@(Model.PageIndex - 1)">Précédent</a>
+        </li>
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                <a class="page-link" asp-page="./ListPlayers" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@i">@i</a>
+            </li>
+        }
+        <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
+            <a class="page-link" asp-page="./ListPlayers" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@(Model.PageIndex + 1)">Suivant</a>
+        </li>
+    </ul>
+</div>

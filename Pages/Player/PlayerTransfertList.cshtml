@@ -1,0 +1,58 @@
+@page
+@model Mercato.Pages.Player.PlayerTransfertList
+@{
+    ViewData["Title"] = "PlayerTransfertList";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="get">
+    <div class="form-group">
+        <label for="searchTerm">Rechercher par nom du joueur</label>
+        <input type="text" id="searchTerm" name="searchTerm" value="@Model.SearchTerm" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Club</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var player in Model.Players)
+            {
+                <tr>
+                    <td>@player.Name</td>
+                    <td>@player.Position</td>
+                    <td>@player.Club.Name</td>
+                    <td>
+                        <a asp-page="./Details" asp-route-id="@player.Id">Acheter</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <ul class="pagination">
+        <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+            <a class="page-link" asp-page="./PlayerTransfertList" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@(Model.PageIndex - 1)">Précédent</a>
+        </li>
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                <a class="page-link" asp-page="./PlayerTransfertList" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@i">@i</a>
+            </li>
+        }
+        <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
+            <a class="page-link" asp-page="./PlayerTransfertList" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@(Model.PageIndex + 1)">Suivant</a>
+        </li>
+    </ul>
+</div>
