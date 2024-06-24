@@ -1,0 +1,63 @@
+@model List<TransferRequest>
+
+@{
+    ViewData["Title"] = "Liste des Offres de Transfert";
+    int pageSize = ViewBag.PageSize ?? 10; // Default page size if not set
+    int totalPages = (int)Math.Ceiling((double)Model.Count / pageSize); // Calculate total pages
+    Layout = "_Layout";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="get" asp-controller="TransferRequests" asp-action="Index">
+    <div class="form-group">
+        <label for="searchTerm">Rechercher par nom du joueur</label>
+        <input type="text" id="searchTerm" name="searchTerm" value="@ViewBag.CurrentFilter" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom du Joueur</th>
+            <th>Position</th>
+            <th>De Club</th>
+            <th>À Club</th>
+            <th>Offre</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.Player.Name</td>
+                <td>@request.Player.Position</td>
+                <td>@request.FromClub.Name</td>
+                <td>@request.ToClub.Name</td>
+                <td>@request.Offer</td>
+                <td>@request.Date.ToShortDateString()</td>
+                <td>@request.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <ul class="pagination">
+        <li class="page-item @(ViewBag.PageIndex == 1 ? "disabled" : "")">
+            <a class="page-link" asp-controller="TransferRequests" asp-action="Index" asp-route-searchTerm="@ViewBag.CurrentFilter" asp-route-pageIndex="@(ViewBag.PageIndex - 1)">Précédent</a>
+        </li>
+        @for (int i = 1; i <= totalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.PageIndex ? "active" : "")">
+                <a class="page-link" asp-controller="TransferRequests" asp-action="Index" asp-route-searchTerm="@ViewBag.CurrentFilter" asp-route-pageIndex="@i">@i</a>
+            </li>
+        }
+        <li class="page-item @(ViewBag.PageIndex == totalPages ? "disabled" : "")">
+            <a class="page-link" asp-controller="TransferRequests" asp-action="Index" asp-route-searchTerm="@ViewBag.CurrentFilter" asp-route-pageIndex="@(ViewBag.PageIndex + 1)">Suivant</a>
+        </li>
+    </ul>
+</div>

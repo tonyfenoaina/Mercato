@@ -1,0 +1,31 @@
+@model List<Mercato.Models.TransferRequest>
+
+<h1>Liste des Offres de Transfert</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom du Joueur</th>
+            <th>Position</th>
+            <th>De Club</th>
+            <th>À Club</th>
+            <th>Offre</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.Player.Name</td>
+                <td>@request.Player.Position</td>
+                <td>@request.FromClub.Name</td>
+                <td>@request.ToClub.Name</td>
+                <td>@request.Offer</td>
+                <td>@request.Date.ToShortDateString()</td>
+                <td>@request.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
