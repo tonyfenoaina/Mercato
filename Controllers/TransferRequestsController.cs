@@ -1,88 +1,56 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
-using Mercato.Models;
 
 namespace Mercato.Controllers
 {
+    [Route("Transfers")]
     public class TransferRequestsController : Controller
     {
-        private readonly string _connectionString;
+        private readonly AppDbContext _context;
 
-        public TransferRequestsController(IConfiguration configuration)
+        public TransferRequestsController(AppDbContext context)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _context = context;
         }
 
-        public async Task<IActionResult> Index(string searchString, int page = 1, int pageSize = 10)
+         [HttpGet("AllTransferRequests")]
+        public async Task<IActionResult> AllTransferRequests(string searchTerm, int pageIndex = 1, int pageSize = 4)
         {
-            var transferRequests = new List<TransferRequest>();
-            int skip = (page - 1) * pageSize;
+            IQueryable<TransferRequest> query = _context.TransferRequests
+                .Include(tr => tr.Player)
+                .Include(tr => tr.FromClub)
+                .Include(tr => tr.ToClub);
 
-            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                dbConnection.Open();
-
-                // Construction de la requête SQL avec pagination et recherche
-                string sqlQuery = "SELECT tr.Id, tr.PlayerId, p.Name as PlayerName, p.Position, tr.FromClubId, fc.Name as FromClubName, tr.ToClubId, tc.Name as ToClubName, tr.Offer, tr.Date, tr.Status " +
-                                  "FROM TransferRequests tr " +
-                                  "JOIN Players p ON tr.PlayerId = p.Id " +
-                                  "JOIN Clubs fc ON tr.FromClubId = fc.Id " +
-                                  "JOIN Clubs tc ON tr.ToClubId = tc.Id ";
-
-                if (!string.IsNullOrEmpty(searchString))
-                {
-                    sqlQuery += $"WHERE p.Name LIKE '%{searchString}%' OR fc.Name LIKE '%{searchString}%' OR tc.Name LIKE '%{searchString}%' ";
-                }
-
-                sqlQuery += $"ORDER BY tr.Date DESC " +
-                            $"OFFSET {skip} ROWS FETCH NEXT {pageSize} ROWS ONLY";
-
-                SqlCommand command = new SqlCommand(sqlQuery, (SqlConnection)dbConnection);
-
-                Console.Write(sqlQuery);
-
-                using (IDataReader reader = await command.ExecuteReaderAsync())
-                {
-                    while (reader.Read())
-                    {
-                        var transferRequest = new TransferRequest
-                        {
-                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                            PlayerId = reader.GetInt32(reader.GetOrdinal("PlayerId")),
-                            Player = new Players
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("PlayerId")),
-                                Name = reader.GetString(reader.GetOrdinal("PlayerName")),
-                                Position = reader.GetString(reader.GetOrdinal("Position"))
-                            },
-                            FromClubId = reader.GetInt32(reader.GetOrdinal("FromClubId")),
-                            FromClub = new Club
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("FromClubId")),
-                                Name = reader.GetString(reader.GetOrdinal("FromClubName"))
-                            },
-                            ToClubId = reader.GetInt32(reader.GetOrdinal("ToClubId")),
-                            ToClub = new Club
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("ToClubId")),
-                                Name = reader.GetString(reader.GetOrdinal("ToClubName"))
-                            },
-                            Offer = reader.GetDecimal(reader.GetOrdinal("Offer")),
-                            Date = reader.GetDateTime(reader.GetOrdinal("Date")),
-                            Status = (TransferRequestStatus)reader.GetInt32(reader.GetOrdinal("Status"))
-                        };
-
-                        transferRequests.Add(transferRequest);
-                    }
-                }
+                query = query.Where(tr => tr.Player.Name.Contains(searchTerm));
             }
 
-            return View(transferRequests);
+            int totalItems = await query.CountAsync();
+            var transferRequests = await query
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var model = new TransferRequestViewModel
+            {
+                TransferRequests = transferRequests,
+                SearchTerm = searchTerm,
+                PageIndex = pageIndex,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize)
+            };
+
+            return View(model);
         }
     }
-}
+    public class TransferRequestViewModel
+    {
+        public List<TransferRequest> TransferRequests { get; set; }
+        public string SearchTerm { get; set; }
+        public int PageIndex { get; set; }
+        public int TotalPages { get; set; }
+    }
+    }
+

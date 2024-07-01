@@ -1,3 +1,4 @@
+using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 public class AppDbContext : DbContext
@@ -30,4 +31,5 @@ public class AppDbContext : DbContext
             modelBuilder.Entity<TransferRequest>()
                 .HasKey(tr => tr.Id);
     }
+ 
 }

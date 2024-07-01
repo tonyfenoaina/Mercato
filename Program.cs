@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Mercato.Service;
 using System.Data;
 using System.Data.SqlClient;
-
+using Rotativa.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

@@ -102,12 +102,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/DEV/github/Mercato/Views/Clubs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2x1YnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DEV/github/Mercato/Views/Player/ListPlayersBtClub.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWVyXExpc3RQbGF5ZXJzQnRDbHViLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/DEV/github/Mercato/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DEV/github/Mercato/Views/TransferRequests/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNmZXJSZXF1ZXN0c1xJbmRleC5jc2h0bWw=
+[D:/DEV/github/Mercato/Views/TransferRequests/AllTransferRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNmZXJSZXF1ZXN0c1xBbGxUcmFuc2ZlclJlcXVlc3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/DEV/github/Mercato/Pages/Shared/_Layout.cshtml]

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Rotativa.AspNetCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -70,6 +71,13 @@ namespace Mercato.Pages.Player
             await _dbContext.SaveChangesAsync();
 
             return RedirectToPage();
+        }
+
+         public IActionResult OnGetExportToPdf(string searchTerm)
+        {
+            var players = _dbContext.Players.ToList(); // Fetch all players or filter as needed
+
+            return new ViewAsPdf("ListPlayers", players);
         }
     }
 }

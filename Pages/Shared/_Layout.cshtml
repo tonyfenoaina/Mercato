@@ -9,7 +9,6 @@
     {
         var clubData = JsonConvert.DeserializeObject<Club>(clubInfo);
         club = clubData;
-        @* club = await ClubService.GetClubByIdAsync(clubData.Id); *@
     }
 }
 <!DOCTYPE html>
@@ -46,17 +45,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Transfert/MesOffres">Mes Offres</a>
                         </li>
-                       
-                      
                     </ul>
-                      
+                    @* Affichage du nom du club et du budget *@
                     <span class="navbar-text">
-                                Club: @club.Name | Budget: @club.Budget €
+                        @club.Name | Budget: @club.Budget €
                     </span>
-                    <a class="nav-link text-dark" asp-area="" asp-page="/index">Deconnexion</a>
-                    @* <form method="post" asp-page="/" class="form-inline">
-                    <button type="submit" class="btn btn-link text-dark">Déconnexion</button>
-                    </form> *@
+                    @* Affichage de l'image du club *@
+                    @if (!string.IsNullOrEmpty(club?.Image))
+                    {
+                        <img src="~/images/clubs/@club.Image" alt="Logo du club" style="height: 30px; width: auto; margin-left: 10px;">
+                    }
+                    @* Lien de déconnexion *@
+                    <a class="nav-link text-dark" asp-area="" asp-page="/index">Déconnexion</a>
                 </div>
             </div>
         </nav>

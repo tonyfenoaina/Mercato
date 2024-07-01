@@ -4,7 +4,7 @@
     ViewData["Title"] = "Liste des Offres de Transfert";
 }
 
-<h1>Liste des Offres de Transfert</h1>
+<h1>Mes Offres</h1>
 
 <form method="get">
     <div class="form-group">
@@ -30,7 +30,7 @@
             <tr>
                 <td>@request.Player.Name</td>
                 <td>@request.Player.Position</td>
-                <td>@request.Offer</td>
+                <td>@request.Offer €</td>
                 <td>@request.Date.ToShortDateString()</td>
                 <td>@request.Status</td>
             </tr>

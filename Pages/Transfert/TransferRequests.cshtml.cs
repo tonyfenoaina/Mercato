@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -77,6 +78,40 @@ namespace Mercato.Pages
                 if (player != null)
                 {
                     player.ClubId = request.ToClubId;
+                }
+
+                // Mettre à jour les budgets des clubs
+                var fromClub = await _dbContext.Club.FindAsync(request.FromClubId);
+                var toClub = await _dbContext.Club.FindAsync(request.ToClubId);
+                if (fromClub != null && toClub != null)
+                {
+                    if (fromClub.Budget >= request.Offer)
+                    {
+                        fromClub.Budget -= request.Offer; // Déduction du budget du club vendeur
+                        toClub.Budget += request.Offer;   // Ajout au budget du club acheteur
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Le budget du club vendeur est insuffisant.");
+                        return await OnGetAsync(SearchTerm, 1); // Retourne à la page avec l'erreur
+                    }
+                }
+                var currentClubInfo = _httpContextAccessor.HttpContext.Request.Cookies["ClubInfo"];
+                if (!string.IsNullOrEmpty(currentClubInfo))
+                {
+                    var club = JsonConvert.DeserializeObject<Club>(currentClubInfo);
+                    if (club.Id == fromClub.Id)
+                    {
+                        club.Budget -= request.Offer; // Déduire du budget du club actuel
+                    }
+                    else if (club.Id == toClub.Id)
+                    {
+                        club.Budget += request.Offer; // Ajouter au budget du club actuel
+                    }
+
+                    // Mettre à jour les informations du club dans les cookies
+                    var clubInfoJson = JsonConvert.SerializeObject(club);
+                    _httpContextAccessor.HttpContext.Response.Cookies.Append("ClubInfo", clubInfoJson);
                 }
             }
             else if (status == 2) // Si la demande est refusée

@@ -4,19 +4,45 @@
     ViewData["Title"] = "Détails du joueur";
 }
 
-<h1>Détails du joueur</h1>
+<h1>@ViewData["Title"]</h1>
 
-<div>
-    <h2>@Model.Player.Name</h2>
-    <p>Position: @Model.Player.Position</p>
-    <p>Valeur: @Model.Player.Value</p>
-</div>
+@if (Model.Player != null)
+{
+    <div>
+        <h2>@Model.Player.Name</h2>
+        <p>Position: @Model.Player.Position</p>
+        <p>Valeur: @Model.Player.Value €</p>
+    </div>
+
+    @if (Model.Player.Club != null)
+    {
+        <div>
+            <h3>Club du joueur</h3>
+            <p>Nom du club : @Model.Player.Club.Name</p>
+            @if (!string.IsNullOrEmpty(Model.Player.Club.Image))
+            {
+                <img src="~/images/clubs/@Model.Player.Club.Image" alt="Logo du club" style="max-width: 200px; max-height: 200px;" />
+            }
+            else
+            {
+                <span>Aucune image disponible</span>
+            }
+        </div>
+    }
+}
+else
+{
+    <div>
+        <p>Le joueur n'a pas été trouvé.</p>
+    </div>
+}
 
 <h3>Faire une offre de transfert</h3>
 <form method="post">
     <div class="form-group">
         <label for="Offer">Offre:</label>
         <input type="number" id="Offer" name="Offer" step="0.01" class="form-control" required />
+        <span asp-validation-for="Offer" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Acheter</button>
 </form>

@@ -1,7 +1,7 @@
 @page
 @model Mercato.Pages.Clubs.RegisterModel
 @{
-    ViewData["Title"] = "RegisterModel";
+    ViewData["Title"] = "Register Club";
     Layout = null;
 }
 
@@ -12,28 +12,86 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Mercato.styles.css" asp-append-version="true" />
+    <style>
+        /* Style personnalisé pour le bouton de retour */
+        .btn-back {
+            color: white;
+            background-color: #6c757d; /* Couleur gris foncé de Bootstrap */
+            border-color: #6c757d; /* Bordure de couleur gris foncé */
+        }
+
+        .btn-back:hover {
+            color: white;
+            background-color: #495057; /* Couleur gris moyen de Bootstrap */
+            border-color: #495057; /* Bordure de couleur gris moyen */
+        }
+    </style>
 </head>
 
-<form method="post">
-    <div class="form-group">
-        <label asp-for="Club.Name"></label>
-        <input name="Name" asp-for="Club.Name" class="form-control" />
-        <span asp-validation-for="Club.Name" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Club.Code"></label>
-        <input name="Code" asp-for="Club.Code" class="form-control" />
-        <span asp-validation-for="Club.Code" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Club.Password"></label>
-        <input name="Password" asp-for="Club.Password" type="password" class="form-control" />
-        <span asp-validation-for="Club.Password" class="text-danger"></span>
-    </div>
-     <div class="form-group">
-        <label asp-for="Club.Budget"></label>
-        <input name="Budget" asp-for="Club.Budget" type="text" class="form-control" />
-        <span asp-validation-for="Club.Budget" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+<body>
+    <form method="post" enctype="multipart/form-data" style="width: 30vw; margin:auto; padding:2rem; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); margin-top:3rem; font-size: Segoe UI">
+        <div style="text-align: center; font-weight:700; font-size:2rem">Inscription</div>
+        <br />
+        <div class="form-group">
+            <label style="font-weight: 500" asp-for="Club.Name"></label>
+            <input name="Name" asp-for="Club.Name" class="form-control" />
+            <span asp-validation-for="Club.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label style="font-weight: 500" asp-for="Club.Code"></label>
+            <input name="Code" asp-for="Club.Code" class="form-control" />
+            <span asp-validation-for="Club.Code" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label style="font-weight: 500" asp-for="Club.Password"></label>
+            <input name="Password" asp-for="Club.Password" type="password" class="form-control" />
+            <span asp-validation-for="Club.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label style="font-weight: 500" asp-for="Club.Budget"></label>
+            <input name="Budget" asp-for="Club.Budget" type="text" class="form-control" />
+            <span asp-validation-for="Club.Budget" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label style="font-weight: 500" for="Image">Logo du club</label>
+            <input name="Image" type="file" class="form-control" onchange="previewImage(event)" />
+            <span asp-validation-for="Club.Image" class="text-danger"></span>
+        </div>
+
+        <!-- Prévisualisation de l'image -->
+        <div id="imagePreview" style="display: none;">
+            <img id="preview" src="#" alt="Preview" style="max-width: 100%; max-height: 300px;" />
+        </div>
+
+        <br /><br />
+        <div style="width: 100%; margin-left:auto; display:flex gap:2rem">
+            <button type="submit" class="btn btn-primary" style="margin: auto;">S'inscrire</button>
+        </div>
+        <a href="/index" class="btn btn-back mt-3">Retour</a> <!-- Utilisation de la classe stylisée btn-back -->
+    </form>
+
+    <script>
+        function previewImage(event) {
+            var input = event.target;
+            var preview = document.getElementById('preview');
+            var imagePreview = document.getElementById('imagePreview');
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+
+</html>

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mercato")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73766bed5b226e6314681a67a47202540d3e5cb8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb6343e15ffadd7f369ab72f96154523580f0dfb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mercato")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mercato")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

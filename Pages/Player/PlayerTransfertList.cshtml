@@ -21,6 +21,7 @@
                 <th>Name</th>
                 <th>Position</th>
                 <th>Club</th>
+                <th>Liste des transferts</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -31,9 +32,10 @@
                     <td>@player.Name</td>
                     <td>@player.Position</td>
                     <td>@player.Club.Name</td>
-                    <td>
-                        <a asp-page="./Details" asp-route-id="@player.Id">Acheter</a>
-                    </td>
+                    <td>@(player.IsForTransfer ? "Oui" : "Non")</td>
+                     <td>
+                    <a asp-page="./Details" asp-route-id="@player.Id" class="btn btn-primary btn-sm">Acheter</a>
+                </td>
                 </tr>
             }
         </tbody>
@@ -43,16 +45,19 @@
 <div>
     <ul class="pagination">
         <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
-            <a class="page-link" asp-page="./PlayerTransfertList" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@(Model.PageIndex - 1)">Précédent</a>
+            <a class="page-link" asp-page="./PlayerTransfertList" asp-route-searchTerm="@Model.SearchTerm"
+                asp-route-pageIndex="@(Model.PageIndex - 1)">Précédent</a>
         </li>
         @for (int i = 1; i <= Model.TotalPages; i++)
         {
             <li class="page-item @(i == Model.PageIndex ? "active" : "")">
-                <a class="page-link" asp-page="./PlayerTransfertList" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@i">@i</a>
+                <a class="page-link" asp-page="./PlayerTransfertList" asp-route-searchTerm="@Model.SearchTerm"
+                    asp-route-pageIndex="@i">@i</a>
             </li>
         }
         <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
-            <a class="page-link" asp-page="./PlayerTransfertList" asp-route-searchTerm="@Model.SearchTerm" asp-route-pageIndex="@(Model.PageIndex + 1)">Suivant</a>
+            <a class="page-link" asp-page="./PlayerTransfertList" asp-route-searchTerm="@Model.SearchTerm"
+                asp-route-pageIndex="@(Model.PageIndex + 1)">Suivant</a>
         </li>
     </ul>
 </div>

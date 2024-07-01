@@ -6,15 +6,24 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p><a asp-page="PlayerModel">Créer de nouveaux joueurs</a></p>
-<p><a asp-page="ImportPlayersModel">Importer des joueurs</a></p>
+<div class="mb-3">
+    <a class="btn btn-success" asp-page="PlayerModel">
+        <i class="bi bi-person-plus-fill"></i> Créer de nouveaux joueurs
+    </a>
+    <a class="btn btn-info ms-2" asp-page="ImportPlayersModel">
+        <i class="bi bi-file-earmark-arrow-down-fill"></i> Importer des joueurs
+    </a>
+</div>
 
 <form method="get">
     <div class="form-group">
         <label for="searchTerm">Rechercher par nom du joueur</label>
-        <input type="text" id="searchTerm" name="searchTerm" value="@Model.SearchTerm" class="form-control" />
+        <input style="margin-top:1em ;" type="text" id="searchTerm" name="searchTerm" value="@Model.SearchTerm" class="form-control" />
     </div>
-    <button type="submit" class="btn btn-primary">Rechercher</button>
+    <div style="margin-top:1em ;">
+        <button type="submit" class="btn btn-primary">Rechercher</button>
+    </div>
+   
 </form>
 
 <table class="table">
@@ -39,9 +48,15 @@
                     </form>
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@player.Id">Edit</a> |
-                    <a asp-page="./Delete" asp-route-id="@player.Id">Delete</a>
-                </td>
+                <div class="btn-group" role="group">
+                    <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@player.Id">
+                        <i class="bi bi-pencil-fill"></i> Edit
+                    </a>
+                    <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@player.Id">
+                        <i class="bi bi-trash-fill"></i> Delete
+                    </a>
+                </div>
+            </td>
             </tr>
         }
     </tbody>

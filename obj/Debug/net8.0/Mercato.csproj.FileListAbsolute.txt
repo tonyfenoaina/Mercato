@@ -281,3 +281,5 @@ D:\DEV\github\Mercato\obj\Debug\net8.0\refint\Mercato.dll
 D:\DEV\github\Mercato\obj\Debug\net8.0\Mercato.pdb
 D:\DEV\github\Mercato\obj\Debug\net8.0\Mercato.genruntimeconfig.cache
 D:\DEV\github\Mercato\obj\Debug\net8.0\ref\Mercato.dll
+D:\DEV\github\Mercato\bin\Debug\net8.0\Rotativa.AspNetCore.dll
+D:\DEV\github\Mercato\obj\Debug\net8.0\Mercato.MvcApplicationPartsAssemblyInfo.cs

@@ -9,6 +9,8 @@ using System.ComponentModel.DataAnnotations.Schema;
     public string Password { get; set; }
     public string Code { get; set; }
     public decimal Budget { get; set; }
-    //  public List<Player> Players { get; set; }
+    public string Image { get; set;}
+
+      public List<Players> Players { get; set; }
     }
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "G31arWT7DIr/TDl0GmYcLEYMLhlrWNZA/nvVvgIV7XihK5OhZI0TXqBDQZXYkDTAzSwc9PSjUhC9IwStC57TJw==",
+  "dgSpecHash": "cK3MwqNDDIMJTWY3jXOhasarDV1HNR5GJndtDHTXz+z3EenA/TPu25m5FYUq/IHz7nFnuscibOZGTwGLo9T5sw==",
   "success": true,
   "projectFilePath": "D:\\DEV\\github\\Mercato\\Mercato.csproj",
   "expectedPackageFiles": [
@@ -48,6 +48,7 @@
     "C:\\Users\\info5\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\info5\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\info5\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\info5\\.nuget\\packages\\rotativa.aspnetcore\\1.3.2\\rotativa.aspnetcore.1.3.2.nupkg.sha512",
     "C:\\Users\\info5\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\info5\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\info5\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

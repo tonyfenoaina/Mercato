@@ -13,6 +13,26 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\DEV\\github\\Mercato\\wwwroot\\images\\clubs\\3416f.jpg",
+      "PackagePath": "staticwebassets\\images\\clubs\\3416f.jpg"
+    },
+    {
+      "Id": "D:\\DEV\\github\\Mercato\\wwwroot\\images\\clubs\\city.jpg",
+      "PackagePath": "staticwebassets\\images\\clubs\\city.jpg"
+    },
+    {
+      "Id": "D:\\DEV\\github\\Mercato\\wwwroot\\images\\clubs\\elgeco.jpeg",
+      "PackagePath": "staticwebassets\\images\\clubs\\elgeco.jpeg"
+    },
+    {
+      "Id": "D:\\DEV\\github\\Mercato\\wwwroot\\images\\clubs\\madrid.png",
+      "PackagePath": "staticwebassets\\images\\clubs\\madrid.png"
+    },
+    {
+      "Id": "D:\\DEV\\github\\Mercato\\wwwroot\\images\\clubs\\manchester.png",
+      "PackagePath": "staticwebassets\\images\\clubs\\manchester.png"
+    },
+    {
       "Id": "D:\\DEV\\github\\Mercato\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

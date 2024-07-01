@@ -1,0 +1,26 @@
+@model IEnumerable<Players>
+
+@{
+    ViewData["Title"] = "Liste des Joueurs";
+    Layout = "_Layout"; 
+}
+
+<h1>Liste des Joueurs du Club</h1>
+
+<div class="row">
+    @foreach (var player in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@player.Name</h5>
+                    <p class="card-text">Position: @player.Position</p>
+                    <p class="card-text">Valeur: @player.Value €</p>
+                    <!-- Ajoutez ici des actions supplémentaires comme la modification ou la suppression -->
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<a href="/Clubs" class="btn btn-secondary">Retour à la liste des clubs</a>
